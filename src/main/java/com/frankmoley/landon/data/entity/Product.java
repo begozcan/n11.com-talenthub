@@ -2,6 +2,7 @@ package com.frankmoley.landon.data.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 @Table(name="PRODUCT")
 public class Product {
 
+    @Id
     @Column(name = "PRODUCT_ID")
     private long productID;
     @Column(name = "PRODUCT_NAME")

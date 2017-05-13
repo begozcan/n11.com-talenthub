@@ -4,12 +4,11 @@ import javax.persistence.*;
 /**
  * Created by talenthub17 on 13/05/2017.
  */
-
 @Entity
 @Table(name="CUSTOMER")
 public class Customer {
 
-
+    @Id
     @Column(name = "CUSTOMER_ID")
     private long customerID;
     @Column(name = "CUSTOMER_NAME")
