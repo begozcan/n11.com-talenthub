@@ -60,4 +60,8 @@ public class ProductService {
         productRepository.save(product);
     }
 
+    public Product getProduct(long productID){
+        return  productRepository.findOne(productID);
+    }
+
 }

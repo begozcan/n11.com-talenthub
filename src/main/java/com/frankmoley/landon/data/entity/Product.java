@@ -1,9 +1,6 @@
 package com.frankmoley.landon.data.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by talenthub17 on 13/05/2017.
@@ -13,6 +10,7 @@ import javax.persistence.Table;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PRODUCT_ID")
     private long productID;
     @Column(name = "PRODUCT_NAME")
