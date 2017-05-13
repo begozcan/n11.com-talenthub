@@ -38,8 +38,10 @@
             <td>Product Name</td>
             <td>Product Quantity</td>
         </tr>
-        <tr th:each="p: ${products}">
-            <td th:text="${p.produ}">Room Name</td>
+        <tr th:each="shopping: ${shoppingList}">
+            <td th:text="${shopping.productName}">Product Name</td>
+            <td th:text="${shopping.productQuantity}">Product Quantity</td>
+            <td><button th:id="${shopping.productId}">Delete</button></td>
         </tr>
     </table>
 </div>

@@ -11,6 +11,13 @@ public class Shopping {
     private String customerName;
     private Date date;
 
+    public Shopping() {}
+
+    public Shopping(String productName, int productQuantity) {
+        this.productName = productName;
+        this.productQuantity = productQuantity;
+    }
+
     public long getShoppingId() {
         return shoppingId;
     }

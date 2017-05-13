@@ -1,5 +1,6 @@
 package com.frankmoley.landon.business.service;
 
+import com.frankmoley.landon.business.domain.Shopping;
 import com.frankmoley.landon.data.entity.Product;
 import com.frankmoley.landon.data.repository.ProductRepository;
 import com.frankmoley.landon.data.repository.CustomerRepository;
@@ -25,6 +26,26 @@ public class ProductService {
 
     public Iterable<Product> findAll() {
         return productRepository.findAll();
+    }
+
+    public List<Shopping> getAllProducts() {
+        Iterable<Product> productIterable = this.productRepository.findAll();
+        Map<Long, Shopping> productMap = new HashMap<>();
+        productIterable.forEach(product->{
+            Shopping shoppingObj = new Shopping();
+            shoppingObj.setProductId(product.getProductID());
+            shoppingObj.setProductName(product.getProductName());
+            shoppingObj.setProductQuantity(product.getProductQuantity());
+            productMap.put(product.getProductID(), shoppingObj);
+        });
+
+        List<Shopping> shoppingList = new ArrayList<>();
+        for(Long productId: productMap.keySet()) {
+            shoppingList.add(productMap.get(productId));
+        }
+        shoppingList.add(new Shopping("Product Name", 1));
+        return shoppingList;
+
     }
 
     public void addProduct(Product product) {

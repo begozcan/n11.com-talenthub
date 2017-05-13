@@ -43,4 +43,7 @@ function formatDate(input) {
 $(document).ready(function(){
     setPicker();
     setInitialDate();
+    $("button").click(function () {
+        $.ajax({url: "/shopping", success: function(result){}})
+    });
 });
