@@ -1,7 +1,7 @@
 package com.frankmoley.landon.web.application;
 
 import com.frankmoley.landon.business.domain.RoomReservation;
-import com.frankmoley.landon.business.service.ReservationService;
+import com.frankmoley.landon.business.service.ProductService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +23,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebMvcTest(ReservationController.class)
-public class ReservationControllerTest {
+@WebMvcTest(ProductController.class)
+public class ProductControllerTest {
 
     @MockBean
-    private ReservationService reservationService;
+    private ProductService productService;
     @Autowired
     private MockMvc mockMvc;
 
@@ -47,7 +47,7 @@ public class ReservationControllerTest {
         mockRoomReservation.setRoomName("JUnit Room");
         mockReservationList.add(mockRoomReservation);
 
-        given(reservationService.getRoomReservationsForDate("2017-01-01")).willReturn(mockReservationList);
+        //given(productService.getRoomReservationsForDate("2017-01-01")).willReturn(mockReservationList);
         this.mockMvc.perform(get("/reservations?date=2017-01-01")).andExpect(status().isOk()).andExpect(content().string(containsString("Test, JUnit")));
     }
 }

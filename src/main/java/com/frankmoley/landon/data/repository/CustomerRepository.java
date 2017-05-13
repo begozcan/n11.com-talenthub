@@ -8,6 +8,6 @@ import java.sql.Date;
 import java.util.List;
 
 @Repository
-public interface ReservationRepository extends CrudRepository<Reservation, Long> {
+public interface CustomerRepository extends CrudRepository<Reservation, Long> {
     List<Reservation> findByDate(Date date);
 }
