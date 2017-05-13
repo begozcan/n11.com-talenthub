@@ -44,6 +44,11 @@ $(document).ready(function(){
     setPicker();
     setInitialDate();
     $("button").click(function () {
-        $.ajax({url: "/shopping", success: function(result){}})
+        var buttonId = jQuery(this).attr("id");
+        var str ="/shopping/deleteProduct/" + buttonId;
+        $.ajax({url: str, type: "GET", success: function(result){
+            console.log("hi");
+            location.reload();
+        }})
     });
 });

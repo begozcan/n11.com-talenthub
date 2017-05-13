@@ -34,7 +34,11 @@ public class ProductService {
         productIterable.forEach(product->{
             Shopping shoppingObj = new Shopping();
             shoppingObj.setProductId(product.getProductID());
-            shoppingObj.setProductName(product.getProductName());
+            shoppingObj.setTitle(product.getTitle());
+            shoppingObj.setSubtitle(product.getSubtitle());
+            shoppingObj.setCategory(product.getCategory());
+            shoppingObj.setPrice(product.getPrice());
+            shoppingObj.setDiscountPrice(product.getDiscountPrice());
             shoppingObj.setProductQuantity(product.getProductQuantity());
             productMap.put(product.getProductID(), shoppingObj);
         });
@@ -43,9 +47,7 @@ public class ProductService {
         for(Long productId: productMap.keySet()) {
             shoppingList.add(productMap.get(productId));
         }
-        shoppingList.add(new Shopping("Product Name", 1));
         return shoppingList;
-
     }
 
     public void addProduct(Product product) {
@@ -58,6 +60,10 @@ public class ProductService {
 
     public void updateProduct(Product product) {
         productRepository.save(product);
+    }
+
+    public Product getProduct(long productID){
+        return  productRepository.findOne(productID);
     }
 
 }

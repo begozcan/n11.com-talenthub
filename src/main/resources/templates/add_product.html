@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>Red Space</title>
+    <title>Landon Reservations</title>
 
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/ui-darkness/jquery-ui.css"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -20,13 +20,13 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="shopping">Red Space - Products</a>
+            <a class="navbar-brand" href="reservations">Red Space - Products</a>
         </div>
     </div>
 </nav>
 <div class="container">
     <div class="page-header">
-        <h1 class="title">Welcome to the Red Space Page</h1>
+        <h1>Welcome to the Red Space Page</h1>
     </div>
     <div class="input-group">
         <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
@@ -35,29 +35,45 @@
 
     <table class="table table-striped table-bordered">
         <tr>
-            <td>Title</td>
-            <td>Subitle</td>
-            <td>Price</td>
-            <td>Discount Price</td>
-            <td>Category</td>
-            <td>Quantity</td>
-        </tr>
-        <tr th:each="shopping: ${shoppingList}">
-            <td th:text="${shopping.title}">Title</td>
-            <td th:text="${shopping.subtitle}">Subtitle</td>
-            <td th:text="${shopping.price}">Price</td>
-            <td th:text="${shopping.discountPrice}">Discount Price</td>
-            <td th:text="${shopping.category}">Category</td>
-            <td th:text="${shopping.productQuantity}">Product Quantity</td>
-            <td><button th:id="${shopping.productId}">Delete</button></td>
+            <td>Product Name</td>
+            <td>Product Quantity</td>
         </tr>
     </table>
+
+    <form th:action="@{/shopping/add}" th:object="${product}" th:method="POST">
+        Item Title :
+        <input type="text" th:field="*{title}" />
+        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Item Title Error will appear here</span>
+
+        Item Subtitle :
+        <input type="text" th:field="*{subtitle}" />
+        <span th:if="${#fields.hasErrors('subtitle')}" th:errors="*{subtitle}">Item Subtitle Error will appear here</span>
+
+        Item Category :
+        <input type="text" th:field="*{category}" />
+        <span th:if="${#fields.hasErrors('category')}" th:errors="*{category}">Item Category Error will appear here</span>
+
+        Item Price :
+        <input type="text" th:field="*{price}" />
+        <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}">Item Price Error will appear here</span>
+
+        Item Discount Price :
+        <input type="text" th:field="*{discountPrice}" />
+        <span th:if="${#fields.hasErrors('discountPrice')}" th:errors="*{discountPrice}">Item Price Error will appear here</span>
+
+        Quantity:
+        <input type="text" th:field="*{productQuantity}" />
+        <span th:if="${#fields.hasErrors('productQuantity')}" th:errors="*{productQuantity}">Amount Error will appear here</span>
+
+        <button type="submit">Add</button>
+    </form>
+
 </div>
 <footer class="footer navbar-inverse navbar-fixed-bottom">
     <div class="container">
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-4"><p class="text-muted">@Copyright 2017 RED SPACE</p></div>
+            <div class="col-md-4"><p class="text-muted">@Copyright 2017 Frank Moley</p></div>
         </div>
     </div>
 </footer>
