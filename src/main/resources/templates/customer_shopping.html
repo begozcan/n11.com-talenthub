@@ -38,19 +38,13 @@
             <td>Title</td>
             <td>Subitle</td>
             <td>Price</td>
-            <td>Discount Price</td>
             <td>Category</td>
-            <td>Quantity</td>
         </tr>
         <tr th:each="shopping: ${shoppingList}">
             <td th:text="${shopping.title}">Title</td>
             <td th:text="${shopping.subtitle}">Subtitle</td>
             <td th:text="${shopping.price}">Price</td>
-            <td th:text="${shopping.discountPrice}">Discount Price</td>
             <td th:text="${shopping.category}">Category</td>
-            <td th:text="${shopping.productQuantity}">Product Quantity</td>
-            <td><button th:id="${shopping.productId}" class="deleteButton">Delete</button></td>
-            <td><button th:id="${shopping.productId}" class="editButton">Edit</button></td>
         </tr>
     </table>
 </div>

@@ -14,8 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import javax.validation.Valid;
 
-
-
 @Controller
 @RequestMapping(value="/shopping")
 public class ProductController {
@@ -30,10 +28,17 @@ public class ProductController {
         return "shopping";
     }
 
+    @RequestMapping(value = "customer", method= RequestMethod.GET)
+    public String getCustomerProducts(Model model){
+        List<Shopping> productList = productService.getAllProducts();
+        model.addAttribute("shoppingList", productList);
+        return "customer_shopping";
+    }
+
     @RequestMapping(value = "add",method= RequestMethod.GET)
     public ModelAndView itemAddPage(){
         ModelAndView mv = new ModelAndView("add_product","product",new Product());
-        return  mv;
+        return mv;
     }
 
     @RequestMapping(value = "add",method = RequestMethod.POST)
@@ -48,12 +53,18 @@ public class ProductController {
         return "shopping";
     }
 
-////    @RequestMapping(value = "/asdasd", method= RequestMethod.POST)
-////    public void postProduct(@ModelAttribute("product_form") Product product){
-////        productService.addProduct(product);
-////    }
+//    @RequestMapping(value = "/asdasd", method= RequestMethod.POST)
+//    public void postProduct(@ModelAttribute("product_form") Product product){
+//        productService.addProduct(product);
+//    }
 
-    @RequestMapping(value = "/edit", method= RequestMethod.POST)
+    @RequestMapping(value = "edit",method= RequestMethod.GET)
+    public ModelAndView itemEditPage(){
+        ModelAndView mv = new ModelAndView("edit_product","product",new Product());
+        return mv;
+    }
+
+    @RequestMapping(value = "edit", method= RequestMethod.POST)
     public String updateProduct(Product product){
         productService.updateProduct(product);
         return "redirect:/shopping";

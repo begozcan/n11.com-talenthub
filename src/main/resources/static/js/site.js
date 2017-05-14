@@ -40,15 +40,19 @@ function formatDate(input) {
     return new Date(parts[fmt['yyyy']], parts[fmt['mm']]-1, parts[fmt['dd']]);
 };
 
-$(document).ready(function(){
+$(document).ready(function() {
     setPicker();
     setInitialDate();
-    $("button").click(function () {
+    $(".deleteButton").click(function () {
         var buttonId = jQuery(this).attr("id");
-        var str ="/shopping/deleteProduct/" + buttonId;
-        $.ajax({url: str, type: "GET", success: function(result){
-            console.log("hi");
-            location.reload();
-        }})
+        var str = "/shopping/deleteProduct/" + buttonId;
+        $.ajax({
+            url: str, type: "GET", success: function (result) {
+                location.reload();
+            }
+        })
+    });
+    $(".editButton").click(function () {
+        window.location.href = "edit";
     });
 });

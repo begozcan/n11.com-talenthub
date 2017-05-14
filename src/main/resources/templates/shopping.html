@@ -20,7 +20,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="shopping">Red Space - Products</a>
+            <a class="navbar-brand" href="">Red Space - Products</a>
         </div>
     </div>
 </nav>
@@ -49,7 +49,8 @@
             <td th:text="${shopping.discountPrice}">Discount Price</td>
             <td th:text="${shopping.category}">Category</td>
             <td th:text="${shopping.productQuantity}">Product Quantity</td>
-            <td><button th:id="${shopping.productId}">Delete</button></td>
+            <td><button th:id="${shopping.productId}" class="deleteButton">Delete</button></td>
+            <td><button th:id="${shopping.productId}" class="editButton">Edit</button></td>
         </tr>
     </table>
 </div>
@@ -57,7 +58,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4"></div>
-            <div class="col-md-4"><p class="text-muted">@Copyright 2017 RED SPACE</p></div>
+            <div class="col-md-4"><p class="text-muted" align="center">@Copyright 2017 RED SPACE</p></div>
         </div>
     </div>
 </footer>

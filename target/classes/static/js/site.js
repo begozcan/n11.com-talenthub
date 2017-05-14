@@ -43,12 +43,17 @@ function formatDate(input) {
 $(document).ready(function(){
     setPicker();
     setInitialDate();
-    $("button").click(function () {
+    $(".deleteButton").click(function () {
         var buttonId = jQuery(this).attr("id");
         var str ="/shopping/deleteProduct/" + buttonId;
         $.ajax({url: str, type: "GET", success: function(result){
             console.log("hi");
             location.reload();
         }})
+    });
+    $(".editButton").click(function () {
+        var buttonId = jQuery(this).attr("id");
+        localStorage.setItem('editId' + buttonId, true);
+        window.location.href = "edit";
     });
 });
